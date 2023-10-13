@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA66200D2AD9779B00EFBDED /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66200C2AD9779B00EFBDED /* LocationSearchViewModel.swift */; };
+		CA66200F2AD999D600EFBDED /* MapViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66200E2AD999D600EFBDED /* MapViewState.swift */; };
 		CA7615CD2AD8370B00A30905 /* UberCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7615CC2AD8370B00A30905 /* UberCloneApp.swift */; };
 		CA7615D12AD8370C00A30905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7615D02AD8370C00A30905 /* Assets.xcassets */; };
 		CA7615D42AD8370C00A30905 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7615D32AD8370C00A30905 /* Preview Assets.xcassets */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		CA66200C2AD9779B00EFBDED /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
+		CA66200E2AD999D600EFBDED /* MapViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewState.swift; sourceTree = "<group>"; };
 		CA7615C92AD8370B00A30905 /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7615CC2AD8370B00A30905 /* UberCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberCloneApp.swift; sourceTree = "<group>"; };
 		CA7615D02AD8370C00A30905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		CA7615FC2AD8378C00A30905 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA66200E2AD999D600EFBDED /* MapViewState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				CA7615D62AD8370C00A30905 /* Persistence.swift in Sources */,
 				CA7616032AD8381100A30905 /* HomeView.swift in Sources */,
 				CA7616072AD83C7000A30905 /* LocationManager.swift in Sources */,
+				CA66200F2AD999D600EFBDED /* MapViewState.swift in Sources */,
 				CA7615D92AD8370C00A30905 /* UberClone.xcdatamodeld in Sources */,
 				CA7615CD2AD8370B00A30905 /* UberCloneApp.swift in Sources */,
 				CA66200D2AD9779B00EFBDED /* LocationSearchViewModel.swift in Sources */,

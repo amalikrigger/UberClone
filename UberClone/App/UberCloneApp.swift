@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct UberCloneApp: App {
-    let persistenceController = PersistenceController.shared
-    @StateObject var locationSearchViewModel = LocationSearchViewModel()
+  let persistenceController = PersistenceController.shared
+  @StateObject var locationSearchViewModel = LocationSearchViewModel()
 
-    var body: some Scene {
-        WindowGroup {
-            HomeView()
-                .environmentObject(locationSearchViewModel)
-        }
+  var body: some Scene {
+    WindowGroup {
+      HomeView()
+        .environmentObject(locationSearchViewModel)
     }
+  }
 }
