@@ -26,6 +26,7 @@
 		CA7616132AD84D5C00A30905 /* LocationSearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7616122AD84D5C00A30905 /* LocationSearchResultsCell.swift */; };
 		CAEF084E2ADA0B5100A71AB0 /* RideRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF084D2ADA0B5100A71AB0 /* RideRequestView.swift */; };
 		CAEF08502ADA1D5600A71AB0 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF084F2ADA1D5600A71AB0 /* RideType.swift */; };
+		CAEF08522ADA335B00A71AB0 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF08512ADA335B00A71AB0 /* Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		CA7616122AD84D5C00A30905 /* LocationSearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsCell.swift; sourceTree = "<group>"; };
 		CAEF084D2ADA0B5100A71AB0 /* RideRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestView.swift; sourceTree = "<group>"; };
 		CAEF084F2ADA1D5600A71AB0 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
+		CAEF08512ADA335B00A71AB0 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 		CA7615FF2AD837B100A30905 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CAEF08512ADA335B00A71AB0 /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				CA7616052AD8386B00A30905 /* UberMapViewRepresentable.swift in Sources */,
 				CA76160D2AD8463800A30905 /* LocationSearchActivationView.swift in Sources */,
 				CA7616112AD84A8700A30905 /* LocationSearchView.swift in Sources */,
+				CAEF08522ADA335B00A71AB0 /* Double.swift in Sources */,
 				CA76160F2AD8486600A30905 /* MapViewActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct UberMapViewRepresentable: UIViewRepresentable {
   let mapView = MKMapView()
-  let locationManager = LocationManager.shared
   @Binding var mapState: MapViewState
   @EnvironmentObject var viewModel: LocationSearchViewModel
 
