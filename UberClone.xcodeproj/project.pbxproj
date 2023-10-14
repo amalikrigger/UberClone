@@ -27,6 +27,7 @@
 		CAEF084E2ADA0B5100A71AB0 /* RideRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF084D2ADA0B5100A71AB0 /* RideRequestView.swift */; };
 		CAEF08502ADA1D5600A71AB0 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF084F2ADA1D5600A71AB0 /* RideType.swift */; };
 		CAEF08522ADA335B00A71AB0 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF08512ADA335B00A71AB0 /* Double.swift */; };
+		CAEF08542ADAC0B100A71AB0 /* UberLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF08532ADAC0B100A71AB0 /* UberLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		CAEF084D2ADA0B5100A71AB0 /* RideRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestView.swift; sourceTree = "<group>"; };
 		CAEF084F2ADA1D5600A71AB0 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
 		CAEF08512ADA335B00A71AB0 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		CAEF08532ADAC0B100A71AB0 /* UberLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				CA66200E2AD999D600EFBDED /* MapViewState.swift */,
 				CAEF084F2ADA1D5600A71AB0 /* RideType.swift */,
+				CAEF08532ADAC0B100A71AB0 /* UberLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				CA7616032AD8381100A30905 /* HomeView.swift in Sources */,
 				CA7616072AD83C7000A30905 /* LocationManager.swift in Sources */,
 				CAEF084E2ADA0B5100A71AB0 /* RideRequestView.swift in Sources */,
+				CAEF08542ADAC0B100A71AB0 /* UberLocation.swift in Sources */,
 				CA66200F2AD999D600EFBDED /* MapViewState.swift in Sources */,
 				CA7615D92AD8370C00A30905 /* UberClone.xcdatamodeld in Sources */,
 				CA7615CD2AD8370B00A30905 /* UberCloneApp.swift in Sources */,
