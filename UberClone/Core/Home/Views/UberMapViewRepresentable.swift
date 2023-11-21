@@ -22,7 +22,6 @@ struct UberMapViewRepresentable: UIViewRepresentable {
   }
 
   func updateUIView(_ uiView: MKMapView, context: Context) {
-
     switch mapState {
     case .noInput:
       context.coordinator.clearMapViewAndReCenterOnUserLocation()
@@ -56,7 +55,7 @@ extension UberMapViewRepresentable {
       self.parent = parent
       super.init()
     }
-
+      
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
       self.userLocationCoordinate = userLocation.coordinate
       let region = MKCoordinateRegion(
@@ -98,7 +97,7 @@ extension UberMapViewRepresentable {
         let rect = self.parent.mapView.mapRectThatFits(
           route.polyline.boundingMapRect,
           edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
-        self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+          self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
       }
     }
 

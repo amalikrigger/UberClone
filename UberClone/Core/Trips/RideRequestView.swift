@@ -45,7 +45,8 @@ struct RideRequestView: View {
           .padding(.bottom, 10)
 
           HStack {
-            if let location = locationSearchViewModel.selectedUberLocation {
+            if let location = locationSearchViewModel.selectedUberLocation
+              {
               Text(location.title)
                 .font(.system(size: 16, weight: .semibold))
             }

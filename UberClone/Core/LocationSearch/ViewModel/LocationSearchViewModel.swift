@@ -13,7 +13,6 @@ class LocationSearchViewModel: NSObject, ObservableObject {
   @Published var selectedUberLocation: UberLocation?
   @Published var pickUpTime: String?
   @Published var dropOffTime: String?
-
   private let searchCompleter = MKLocalSearchCompleter()
   var queryFragment: String = "" {
     didSet {
@@ -30,25 +29,25 @@ class LocationSearchViewModel: NSObject, ObservableObject {
   }
 
   func selectLocation(_ localSearch: MKLocalSearchCompletion) {
-    locationSearch(forLocalSearchCompletion: localSearch) { response, error in
-      if let error = error {
-        print("DEBUG: Location search failed with error \(error.localizedDescription)")
-        return
-      }
-      guard let item = response?.mapItems.first else { return }
-      let coordinate = item.placemark.coordinate
-      self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
-    }
+        locationSearch(forLocalSearchCompletion: localSearch) { response, error in
+            if let error = error {
+              print("DEBUG: Location search failed with error \(error.localizedDescription)")
+              return
+            }
+            guard let item = response?.mapItems.first else { return }
+            let coordinate = item.placemark.coordinate
+            self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
+          }
   }
 
-  func locationSearch(
+  func locationSearch (
     forLocalSearchCompletion localSearch: MKLocalSearchCompletion,
     completion: @escaping MKLocalSearch.CompletionHandler
   ) {
     let searchRequest = MKLocalSearch.Request()
     searchRequest.naturalLanguageQuery = localSearch.title.appending(localSearch.subtitle)
     let search = MKLocalSearch(request: searchRequest)
-    search.start(completionHandler: completion)
+      search.start(completionHandler: completion)
   }
 
   func computeRidePrice(forType type: RideType) -> Double {
@@ -80,7 +79,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
       }
 
       guard let route = response?.routes.first else { return }
-      self.configurePickUAndDropOffTimes(with: route.expectedTravelTime)
+        self.configurePickUAndDropOffTimes(with: route.expectedTravelTime)
       completion(route)
     }
   }

@@ -10,8 +10,8 @@ import SwiftUI
 struct LocationSearchView: View {
   @State private var startLocationText = ""
   @Binding var mapState: MapViewState
-
   @EnvironmentObject var viewModel: LocationSearchViewModel
+    
   var body: some View {
     VStack {
       HStack {
