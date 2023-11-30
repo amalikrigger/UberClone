@@ -10,8 +10,9 @@ import SwiftUI
 struct HomeView: View {
     @State private var mapState = MapViewState.noInput
     @State private var showSideMenu = false
-    @EnvironmentObject var locationSearchViewModel: LocationSearchViewModel
+//    @EnvironmentObject var locationSearchViewModel: LocationSearchViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
     
     var body: some View {
         Group {
@@ -43,7 +44,7 @@ extension HomeView {
                 UberMapViewRepresentable(mapState: $mapState).ignoresSafeArea()
                 
                 if mapState == .searchingForLocation {
-                    LocationSearchView(mapState: $mapState)
+                    LocationSearchView()
                 } else if mapState == .noInput {
                     LocationSearchActivationView().padding(.top, 72)
                         .onTapGesture {
@@ -63,7 +64,13 @@ extension HomeView {
         .edgesIgnoringSafeArea(.bottom)
         .onReceive(LocationManager.shared.$userLocation) { location in
             if let location = location {
-                locationSearchViewModel.userLocation = location
+                homeViewModel.userLocation = location
+                print(location)
+            }
+        }
+        .onReceive(homeViewModel.$selectedUberLocation) { location in
+            if location != nil {
+                self.mapState = .locationSelected
             }
         }
     }

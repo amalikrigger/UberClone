@@ -9,14 +9,13 @@ import SwiftUI
 
 struct RideRequestView: View {
   @State private var selectedRideType: RideType = .uberX
-  @EnvironmentObject var locationSearchViewModel: LocationSearchViewModel
+  @EnvironmentObject var homeViewModel: HomeViewModel
   var body: some View {
     VStack {
       Capsule()
         .foregroundColor(Color(.systemGray5))
         .frame(width: 48, height: 6)
         .padding(.top, 8)
-
       HStack {
         VStack {
           Circle()
@@ -38,14 +37,14 @@ struct RideRequestView: View {
 
             Spacer()
 
-            Text(locationSearchViewModel.pickUpTime ?? "")
+            Text(homeViewModel.pickUpTime ?? "")
               .font(.system(size: 14, weight: .semibold))
               .foregroundColor(.gray)
           }
           .padding(.bottom, 10)
 
           HStack {
-            if let location = locationSearchViewModel.selectedUberLocation
+            if let location = homeViewModel.selectedUberLocation
               {
               Text(location.title)
                 .font(.system(size: 16, weight: .semibold))
@@ -53,7 +52,7 @@ struct RideRequestView: View {
 
             Spacer()
 
-            Text(locationSearchViewModel.dropOffTime ?? "")
+            Text(homeViewModel.dropOffTime ?? "")
               .font(.system(size: 14, weight: .semibold))
               .foregroundColor(.gray)
           }
@@ -80,7 +79,7 @@ struct RideRequestView: View {
               VStack(alignment: .leading, spacing: 4) {
                 Text(rideType.description)
                   .font(.system(size: 14, weight: .semibold))
-                Text(locationSearchViewModel.computeRidePrice(forType: rideType).toCurrency())
+                Text(homeViewModel.computeRidePrice(forType: rideType).toCurrency())
                   .font(.system(size: 14, weight: .semibold))
               }
               .padding()
@@ -127,7 +126,7 @@ struct RideRequestView: View {
         .padding(.horizontal)
 
       Button {
-
+          homeViewModel.requestTrip()
       } label: {
         Text("CONFIRM RIDE")
           .fontWeight( /*@START_MENU_TOKEN@*/.bold /*@END_MENU_TOKEN@*/)

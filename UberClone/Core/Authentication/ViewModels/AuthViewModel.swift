@@ -8,10 +8,13 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import Combine
 
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    private let service = UserService.shared
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         userSession = Auth.auth().currentUser
@@ -26,20 +29,30 @@ class AuthViewModel: ObservableObject {
             }
             
             self.userSession = result?.user
+            self.fetchUser()
         }
     }
     
     func registerUser(withEmail email: String, password: String, fullname: String) {
+        guard let location = LocationManager.shared.userLocation else {return}
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("DEBUG: Failed to sign up with error \(error.localizedDescription)")
                 return
             }
-
+            
             guard let firebaseUser = result?.user else { return }
             self.userSession = firebaseUser
             
-            let user = User(fullName: fullname, email: email, uid: firebaseUser.uid)
+            let user = User(
+                fullName: fullname,
+                email: email,
+                uid: firebaseUser.uid,
+                coordinates: GeoPoint(latitude: location.latitude, longitude: location.longitude),
+                accountType: .driver
+            )
+            
+            self.currentUser = user
             guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
             Firestore.firestore().collection("users").document(firebaseUser.uid).setData(encodedUser)
         }
@@ -55,12 +68,9 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchUser() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
-            guard let snapshot = snapshot else { return }
-            guard let user = try? snapshot.data(as: User.self) else { return }
+        service.$user.sink { user in
             self.currentUser = user
         }
-
+        .store(in: &cancellables)
     }
 }

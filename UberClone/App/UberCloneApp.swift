@@ -20,15 +20,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct UberCloneApp: App {
   let persistenceController = PersistenceController.shared
-  @StateObject var locationSearchViewModel = LocationSearchViewModel()
+//  @StateObject var locationSearchViewModel = LocationSearchViewModel()
   @StateObject var authViewModel = AuthViewModel()
+  @StateObject var homeViewModel = HomeViewModel()
+
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
   var body: some Scene {
     WindowGroup {
       HomeView()
-        .environmentObject(locationSearchViewModel)
+//        .environmentObject(locationSearchViewModel)
         .environmentObject(authViewModel)
+        .environmentObject(homeViewModel)
     }
   }
 }

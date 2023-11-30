@@ -11,7 +11,8 @@ import SwiftUI
 struct UberMapViewRepresentable: UIViewRepresentable {
   let mapView = MKMapView()
   @Binding var mapState: MapViewState
-  @EnvironmentObject var locationSearchViewModel: LocationSearchViewModel
+//  @EnvironmentObject var locationSearchViewModel: LocationSearchViewModel
+  @EnvironmentObject var homeViewModel: HomeViewModel
 
   func makeUIView(context: Context) -> MKMapView {
     mapView.delegate = context.coordinator
@@ -25,9 +26,10 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     switch mapState {
     case .noInput:
       context.coordinator.clearMapViewAndReCenterOnUserLocation()
+        context.coordinator.addDriversToMap(homeViewModel.drivers)
       break
     case .locationSelected:
-      if let coordinate = locationSearchViewModel.selectedUberLocation?.coordinate {
+      if let coordinate = homeViewModel.selectedUberLocation?.coordinate {
         context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
         context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
       }
@@ -74,6 +76,16 @@ extension UberMapViewRepresentable {
       polyline.lineWidth = 6
       return polyline
     }
+      
+      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+          if let annotation = annotation as? DriverAnnotation {
+              let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "driver")
+              view.image = UIImage(named: "chevron-sign-to-right")
+              return view
+          }
+          
+          return nil
+      }
 
     func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
       parent.mapView.removeAnnotations(parent.mapView.annotations)
@@ -89,7 +101,7 @@ extension UberMapViewRepresentable {
       guard let userLocationCoordinate = self.userLocationCoordinate else {
         return
       }
-      parent.locationSearchViewModel.getDestinationRoute(
+      parent.homeViewModel.getDestinationRoute(
         from: userLocationCoordinate, to: coordinate
       ) { route in
         self.parent.mapView.addOverlay(route.polyline)
@@ -108,5 +120,10 @@ extension UberMapViewRepresentable {
         parent.mapView.setRegion(currentRegion, animated: true)
       }
     }
+      
+      func addDriversToMap(_ drivers: [User]) {
+          let annotations = drivers.map({DriverAnnotation(driver: $0)})
+          self.parent.mapView.addAnnotations(annotations)
+      }
   }
 }
